@@ -17,14 +17,14 @@ export default function BlogLayout({ page, data, lang, alternates, navLinks }) {
       <Breadcrumbs items={[{ title: ui.home, href: `/${lang}` }, { title: data.parent?.title, href: data.parent?.href }, { title: page.title }]} />
       <article>
         <Cover item={page} height={240} />
-        <Title style={{ marginTop: 24 }}>{page.title}</Title>
+        <Title style={{ marginTop: 24, lineHeight: 1.25 }}>{page.title}</Title>
         <Space wrap>
           <Text type="secondary">{ui.publishedOn} {page.date}</Text>
           {page.tags?.map((t) => <Tag key={t}>{t}</Tag>)}
         </Space>
-        {page.content.map((p, i) => (
-          <div key={i} style={{ marginTop: 16 }}><Markdown>{p}</Markdown></div>
-        ))}
+        <div className="post-content" style={{ marginTop: 32 }}>
+          {page.content.map((p, i) => <Markdown key={i} size={17}>{p}</Markdown>)}
+        </div>
       </article>
       <Row gutter={16} style={{ marginTop: 48 }}>
         <Col span={12}>{data.prev && <Link href={data.prev.href}>← {ui.previous}: {data.prev.title}</Link>}</Col>

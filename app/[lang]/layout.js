@@ -1,12 +1,11 @@
 import '../globals.css';
 import { notFound } from 'next/navigation';
-import { Lato } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import Providers from '@/layout/components/Providers';
-import { WishlistProvider } from '@/layout/components/WishlistProvider';
 import { languages, siteUrl, siteName, isValidLang, getLangConfig } from '@/config/website';
 
-const lato = Lato({ subsets: ['latin', 'latin-ext'], weight: ['400', '700', '900'], display: 'swap', variable: '--font-lato' });
+const inter = Inter({ subsets: ['latin', 'latin-ext'], weight: ['400', '500', '600', '700', '800'], display: 'swap', variable: '--font-inter' });
 
 export const dynamicParams = false;
 
@@ -17,7 +16,7 @@ export function generateStaticParams() {
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: siteName, template: `%s | ${siteName}` },
-  icons: { icon: '/favicon.png' },
+  icons: { icon: '/favicon.ico' },
 };
 
 export default async function LangLayout({ children, params }) {
@@ -27,10 +26,10 @@ export default async function LangLayout({ children, params }) {
 
   return (
     <html lang={lang} dir={dir}>
-      <body className={lato.variable} style={{ margin: 0, WebkitFontSmoothing: 'antialiased' }}>
+      <body className={inter.variable} style={{ margin: 0, WebkitFontSmoothing: 'antialiased' }}>
         <AntdRegistry>
           <Providers antdLocale={antdLocale} dir={dir}>
-            <WishlistProvider>{children}</WishlistProvider>
+            {children}
           </Providers>
         </AntdRegistry>
       </body>

@@ -1,11 +1,11 @@
 // Minimalist design tokens: neutral palette, one accent, soft radii, generous space.
 export const colors = {
-  accent: '#e3003e',
-  ink: '#222222',
-  muted: '#666666',
-  line: '#eceef1',
-  soft: '#f7f7f7',
-  dark: '#222222',
+  accent: '#2563eb',
+  ink: '#1f2937',
+  muted: '#6b7280',
+  line: '#e5e7eb',
+  soft: '#f9fafb',
+  dark: '#0a143c',
 };
 
 export const theme = {
@@ -18,7 +18,7 @@ export const theme = {
     borderRadius: 10,
     borderRadiusLG: 14,
     fontFamily:
-      "var(--font-lato), 'Lato', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans Arabic', sans-serif",
+      "var(--font-inter), 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans Arabic', sans-serif",
     fontSize: 15,
     lineHeight: 1.7,
     boxShadow: '0 1px 2px rgba(16,24,40,.04), 0 8px 24px rgba(16,24,40,.06)',

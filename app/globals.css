@@ -4,3 +4,19 @@
     display: none !important;
   }
 }
+
+.md-table { overflow-x: auto; background: #fff; border-radius: 16px; border: 1px solid #e5e7eb; box-shadow: 0 10px 15px -3px rgb(0 0 0 / .08), 0 4px 6px -4px rgb(0 0 0 / .08); margin: 24px 0; }
+.md-table table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.md-table tr:last-child td { border-bottom: 0 !important; }
+.idr-lift { transition: transform .3s ease, box-shadow .3s ease; }
+.idr-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / .1), 0 8px 10px -6px rgb(0 0 0 / .1) !important; }
+@media (min-width: 992px) { .idr-featured { transform: scale(1.05); } }
+.idr-btn:hover { transform: translateY(-2px); filter: brightness(.95); }
+.idr-nav:hover { color: #0050c8 !important; border-bottom-color: #0050c8 !important; }
+
+/* Blog post body */
+.post-content { line-height: 1.75; overflow-wrap: anywhere; }
+.post-content .ant-typography { line-height: 1.75; }
+.post-content ul, .post-content ol { padding-inline-start: 24px; margin: 0 0 16px; font-size: 17px; line-height: 1.75; }
+.post-content li { margin-bottom: 6px; }
+.post-content li > .ant-typography { margin-bottom: 0; }

@@ -2,68 +2,36 @@
 
 import { Layout, Flex, Typography, Divider } from "antd";
 import Link from "next/link";
-import {
-  languages,
-  siteName,
-  phone,
-  whatsapp,
-  contactEmail,
-  address,
-} from "@/config/website";
-import { cities, siteText } from "@/data/site";
-import Logo from "./Logo";
-import { getUi } from "@/data/ui";
+import { languages, tagline, contactEmail, copyright, social } from "@/config/website";
 
 const link = { color: "rgba(255,255,255,.65)" };
 
 export default function Footer({ lang, alternates = {}, navLinks = [] }) {
-  const ui = getUi(lang);
-  const t = siteText[lang] || siteText.fr;
   const langs = languages.filter((l) => alternates[l.code]);
   return (
     <Layout.Footer style={{ padding: "56px 24px 32px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <Flex vertical align="center" gap={24} style={{ textAlign: "center" }}>
-          <Logo light size={44} />
-          <Flex
-            wrap
-            justify="center"
-            gap="24px 64px"
-            style={{ textAlign: "start", width: "100%" }}
-          >
-            <Flex vertical gap={6}>
-              <Typography.Text strong style={{ color: "#fff" }}>
-                {t.links}
-              </Typography.Text>
-              {navLinks.map((l) => (
-                <Link key={l.key} href={l.href} style={link}>
-                  {l.label}
-                </Link>
-              ))}
-            </Flex>
-            <Flex vertical gap={6}>
-              <Typography.Text strong style={{ color: "#fff" }}>
-                Contact
-              </Typography.Text>
-              <span style={link}>
-                {t.address}: {address}
-              </span>
-              <a href={`tel:${phone.replace(/\s/g, "")}`} style={link}>
-                {t.tel}: {phone}
+          <Typography.Text strong style={{ color: "#fff", fontSize: 18 }}>
+            {tagline}
+          </Typography.Text>
+          <a href={`mailto:${contactEmail}`} style={link}>
+            {contactEmail}
+          </a>
+          <Flex wrap justify="center" gap="small 24px">
+            {navLinks.map((l) => (
+              <Link key={l.key} href={l.href} style={link}>
+                {l.label}
+              </Link>
+            ))}
+          </Flex>
+          <Flex gap={16}>
+            {social.map((s) => (
+              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={s.icon} alt={s.label} width={28} height={28} />
               </a>
-              <a href={`https://wa.me/${whatsapp}`} style={link}>
-                WhatsApp: {phone}
-              </a>
-              <a href={`mailto:${contactEmail}`} style={link}>
-                {contactEmail}
-              </a>
-            </Flex>
-            <Flex vertical gap={6} style={{ maxWidth: 260 }}>
-              <Typography.Text strong style={{ color: "#fff" }}>
-                {t.studio}
-              </Typography.Text>
-              <span style={link}>{cities.join(", ")}</span>
-            </Flex>
+            ))}
           </Flex>
           {langs.length > 1 && (
             <Flex wrap justify="center" gap="small 20px">
@@ -86,18 +54,9 @@ export default function Footer({ lang, alternates = {}, navLinks = [] }) {
             </Flex>
           )}
         </Flex>
-        <Divider
-          style={{ borderColor: "rgba(255,255,255,.1)", margin: "32px 0 20px" }}
-        />
-        <Typography.Paragraph
-          style={{
-            color: "rgba(255,255,255,.45)",
-            textAlign: "center",
-            margin: 0,
-            fontSize: 13,
-          }}
-        >
-          © {new Date().getFullYear()} {siteName}.
+        <Divider style={{ borderColor: "rgba(255,255,255,.1)", margin: "32px 0 20px" }} />
+        <Typography.Paragraph style={{ color: "rgba(255,255,255,.45)", textAlign: "center", margin: 0, fontSize: 13 }}>
+          ©{new Date().getFullYear()} {copyright}
         </Typography.Paragraph>
       </div>
     </Layout.Footer>
