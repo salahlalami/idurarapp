@@ -39,5 +39,8 @@ export default function Markdown({ children, size, inline, checks }) {
         }
       : {}),
   };
-  return <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>{String(children ?? '')}</ReactMarkdown>;
+  // Scraped content wraps images in links split across paragraphs ("[\n\n![a](src)\n\n](href)"),
+  // which renders as literal "[" / "![" text — keep them as linked images on one line.
+  const src = String(children ?? '').replace(/\[\s*(!\[[^\]]*\]\([^)]*\))\s*\]\(([^)]*)\)/g, '[$1]($2)');
+  return <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>{src}</ReactMarkdown>;
 }
