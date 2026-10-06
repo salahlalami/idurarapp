@@ -1,0 +1,6 @@
+/* Hide the desktop nav menu on mobile (matches antd `md` breakpoint) */
+@media (max-width: 767.98px) {
+  .desktop-menu {
+    display: none !important;
+  }
+}
