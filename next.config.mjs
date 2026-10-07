@@ -4,6 +4,8 @@ import { defaultLang } from './config/website.js';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Required by @opennextjs/cloudflare to bundle the app for Workers.
+  output: 'standalone',
   trailingSlash: false,
   // Next's built-in trailing-slash redirect is a 308 that runs before custom
   // redirects, causing chains like /old/ -> 308 /old -> 308 /new. We handle
