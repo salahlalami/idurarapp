@@ -6,13 +6,13 @@
   "scripts": {
     "dev": "next dev",
     "predev": "npm run sitemap",
-    "build": "next build && opennextjs-cloudflare build --skipNextBuild",
-    "preview": "opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare deploy",
-    "prebuild": "npm run sitemap",
-    "start": "next start",
+    "build": "next build",
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
+    "prebuild": "npm run sitemap && npm run redirects",
     "sitemap": "node scripts/sitemap.mjs",
-    "translate": "node scripts/translate.mjs"
+    "translate": "node scripts/translate.mjs",
+    "redirects": "node scripts/redirects.mjs"
   },
   "dependencies": {
     "@ant-design/cssinjs": "^2.1.2",
@@ -26,7 +26,6 @@
     "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.20.9",
     "@xenova/transformers": "^2.17.2",
     "acorn": "^8.18.0",
     "wrangler": "^4.148.0"

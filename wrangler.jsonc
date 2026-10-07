@@ -1,17 +1,12 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "idurarapp",
-  "main": ".open-next/worker.js",
   "compatibility_date": "2026-10-01",
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  // Static assets only: no `main` script, so requests never invoke a Worker.
   "assets": {
-    "directory": ".open-next/assets",
-    "binding": "ASSETS"
-  },
-  "services": [
-    {
-      "binding": "WORKER_SELF_REFERENCE",
-      "service": "idurarapp"
-    }
-  ]
+    "directory": "./out",
+    "not_found_handling": "404-page",
+    // /path/ -> /path, matching trailingSlash: false.
+    "html_handling": "drop-trailing-slash"
+  }
 }
