@@ -2,6 +2,9 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "idurarapp",
   "compatibility_date": "2026-10-01",
+  // `wrangler deploy` / `versions upload` build the static export first, so
+  // the deploy works even when Cloudflare's build command is left empty.
+  "build": { "command": "npm run build" },
   // Static assets only: no `main` script, so requests never invoke a Worker.
   "assets": {
     "directory": "./out",
